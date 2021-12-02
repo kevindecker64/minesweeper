@@ -7,14 +7,23 @@
 }
 
 .grid > div {
-  height: 40px;
-  width: 40px;
+  height: 38px;
+  width: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 1px; */
+  border: solid 1px;
 }
 
 .bomb {
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .checked {
-  background-color: red;
+  background-color: lightgray;
+}
+
+.flag {
+    background-color: yellow;
 }

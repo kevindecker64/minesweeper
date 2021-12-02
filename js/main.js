@@ -1,6 +1,3 @@
-/*-- Constants --*/
-const grid = document.querySelector(".grid");
-
 /*-- Variables --*/
 let playable = true;
 let squares = [];
@@ -9,8 +6,7 @@ let bombCount = 20;
 let flagCount = 0;
 
 /*-- Cached Elements --*/
-
-/*-- Event Listeners --*/
+const grid = document.querySelector(".grid");
 
 /*-- Functions --*/
 function createBoard() {
@@ -25,7 +21,7 @@ function createBoard() {
     square.classList.add(shuffledArray[i]);
     grid.appendChild(square);
     squares.push(square);
-
+    // adds event listeners for left/right clicks
     square.addEventListener("click", function (e) {
       click(square);
     });
@@ -116,12 +112,12 @@ function click(square) {
       square.innerHTML = total;
       return;
     }
-    checkSquare(square, currentId);
+    checkSquare(currentId);
   }
   square.classList.add("checked");
 }
 
-function checkSquare(square, currentId) {
+function checkSquare(currentId) {
   const leftEdge = currentId % width === 0;
   const rightEdge = currentId % width === width - 1;
   const topEdge = currentId < width;
