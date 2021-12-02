@@ -6,6 +6,7 @@ let playable = true;
 let squares = [];
 let width = 10;
 let bombCount = 20;
+let flagCount = 0;
 
 /*-- Cached Elements --*/
 
@@ -27,6 +28,10 @@ function createBoard() {
 
     square.addEventListener("click", function (e) {
       click(square);
+    });
+    square.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+      placeFlag(square);
     });
   }
   // checks for bombs next to empty squares
@@ -171,6 +176,22 @@ function checkSquare(square, currentId) {
       click(newSquare);
     }
   }, 10);
+}
+
+function placeFlag(square) {
+  if (!playable) return;
+  if (!square.classList.contains("checked")) {
+    if (!square.classList.contains("flag") && flagCount < bombCount) {
+      square.classList.add("flag");
+      square.innerHTML = "🚩";
+      flagCount++;
+    } else if (square.classList.contains("flag")) {
+      square.classList.remove("flag");
+      square.innerHTML = "";
+      flagCount--;
+    }
+  }
+  console.log(flagCount);
 }
 
 function gameOver(square) {
