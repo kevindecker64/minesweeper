@@ -92,12 +92,18 @@ function createBoard() {
 }
 
 function click(square) {
-  let currentId = square.id;
+  let currentId = parseInt(square.id);
+  console.log(currentId);
   if (!playable) return;
-  if (square.classList.contains("checked") || square.classList.contains("flag"))
+  if (
+    square.classList.contains("checked") ||
+    square.classList.contains("flag")
+  ) {
     return;
+  }
   if (square.classList.contains("bomb")) {
-    console.log("Game Over!");
+    gameOver(square);
+    return;
   } else {
     let total = square.getAttribute("data");
     if (total != 0) {
@@ -118,53 +124,63 @@ function checkSquare(square, currentId) {
   setTimeout(() => {
     // check Left
     if (!leftEdge) {
-      const newId = parseInt(currentId) - 1;
+      const newId = currentId - 1;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check UpLeft
     if (!topEdge && !leftEdge) {
-      const newId = parseInt(currentId) - 1 - width;
+      const newId = currentId - 1 - width;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check Up
     if (!topEdge) {
-      const newId = parseInt(currentId) - width;
+      const newId = currentId - width;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check UpRight
     if (!topEdge && !rightEdge) {
-      const newId = parseInt(currentId) + 1 - width;
+      const newId = currentId + 1 - width;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check Right
     if (!rightEdge) {
-      const newId = parseInt(currentId) + 1;
+      const newId = currentId + 1;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check DownRight
     if (!bottomEdge && !rightEdge) {
-      const newId = parseInt(currentId) + 1 + width;
+      const newId = currentId + 1 + width;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check Down
     if (!bottomEdge) {
-      const newId = parseInt(currentId) + width;
+      const newId = currentId + width;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
     // check DownLeft
-    if (!bottomEdge && ! leftEdge) {
-      const newId = parseInt(currentId) - 1 + width;
+    if (!bottomEdge && !leftEdge) {
+      const newId = currentId - 1 + width;
       const newSquare = document.getElementById(newId);
       click(newSquare);
     }
   }, 10);
+}
+
+function gameOver(square) {
+  console.log("Game Over!");
+  playable = false;
+  for (square of squares) {
+    if (square.classList.contains("bomb")) {
+      square.innerHTML = "💣";
+    }
+  }
 }
 
 createBoard();
