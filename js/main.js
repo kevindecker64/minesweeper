@@ -192,6 +192,7 @@ function placeFlag(square) {
     }
   }
   console.log(flagCount);
+  checkWin();
 }
 
 function gameOver(square) {
@@ -200,6 +201,22 @@ function gameOver(square) {
   for (square of squares) {
     if (square.classList.contains("bomb")) {
       square.innerHTML = "💣";
+    }
+  }
+}
+
+function checkWin() {
+  correctFlags = 0;
+  for (square of squares) {
+    if (
+      square.classList.contains("flag") &&
+      square.classList.contains("bomb")
+    ) {
+      correctFlags++;
+    }
+    if (correctFlags === bombCount) {
+      console.log("YOU WIN!");
+      playable = false;
     }
   }
 }
