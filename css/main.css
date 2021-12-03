@@ -1,11 +1,12 @@
 * {
   box-sizing: border-box;
+  font-family: monospace;
 }
 
 body {
-  background-color: darkgreen;
   display: flex;
   justify-content: center;
+  background-color: slategray;
 }
 
 .grid {
@@ -17,8 +18,9 @@ body {
 }
 
 .grid > div {
-  height: 50px;
-  width: 50px;
+  height: 49px;
+  width: 49px;
+  margin: 0.5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +33,6 @@ body {
 }
 
 .checked {
-  font-family: monospace;
   font-size: 30px;
   background-color: darkgrey;
   border: solid  2px;
@@ -44,4 +45,9 @@ body {
 
 .flag {
   /* background-color: yellow; */
+}
+
+.flags-remaining {
+  font-size: 30px;
+  text-align: center;
 }

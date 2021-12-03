@@ -7,14 +7,16 @@ let flagCount = 0;
 
 /*-- Cached Elements --*/
 const grid = document.querySelector(".grid");
+const flagsRemaining = document.querySelector(".flags-remaining");
 
 /*-- Functions --*/
 function createBoard() {
+  flagsRemaining.innerHTML = `Flags Remaining: ${bombCount - flagCount}`;
+  // fills board with bombs
   const bombsArray = Array(bombCount).fill("bomb");
   const emptyArray = Array(width * width - bombCount).fill("valid");
   const gameArray = emptyArray.concat(bombsArray);
   const shuffledArray = gameArray.sort(() => Math.random() - 0.5);
-  // fills board with bombs
   for (let i = 0; i < width * width; i++) {
     const square = document.createElement("div");
     square.setAttribute("id", i);
@@ -182,10 +184,12 @@ function placeFlag(square) {
       square.classList.add("flag");
       square.innerHTML = "🚩";
       flagCount++;
+      flagsRemaining.innerHTML = `Flags Remaining: ${bombCount - flagCount}`;
     } else if (square.classList.contains("flag")) {
       square.classList.remove("flag");
       square.innerHTML = "";
       flagCount--;
+      flagsRemaining.innerHTML = `Flags Remaining: ${bombCount - flagCount}`;
     }
   }
   console.log(flagCount);
