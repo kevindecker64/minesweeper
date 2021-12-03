@@ -1,29 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: darkgreen;
+  display: flex;
+  justify-content: center;
+}
+
 .grid {
-  height: 400px;
-  width: 400px;
+  height: 500px;
+  width: 500px;
   display: flex;
   flex-wrap: wrap;
-  background-color: grey;
+  background-color: lightgray;
 }
 
 .grid > div {
-  height: 38px;
-  width: 38px;
+  height: 50px;
+  width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 1px; */
-  border: solid 1px;
+}
+
+.valid, 
+.bomb {
+  border: solid 5px;
+  border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
+}
+
+.checked {
+  font-family: monospace;
+  font-size: 30px;
+  background-color: darkgrey;
+  border: solid  2px;
+  border-color: gray;
 }
 
 .bomb {
   /* background-color: orange; */
 }
 
-.checked {
-  background-color: lightgray;
-}
-
 .flag {
-    background-color: yellow;
+  /* background-color: yellow; */
 }

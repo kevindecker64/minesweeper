@@ -103,6 +103,7 @@ function click(square) {
     return;
   }
   if (square.classList.contains("bomb")) {
+    square.classList.add("exploded");
     gameOver(square);
     return;
   } else {
@@ -195,8 +196,20 @@ function gameOver(square) {
   console.log("Game Over!");
   playable = false;
   for (square of squares) {
-    if (square.classList.contains("bomb")) {
+    if (
+      square.classList.contains("bomb") &&
+      !square.classList.contains("flag")
+    ) {
       square.innerHTML = "💣";
+    }
+    if (
+      !square.classList.contains("bomb") &&
+      square.classList.contains("flag")
+    ) {
+      square.innerHTML = "❌";
+    }
+    if (square.classList.contains("exploded")) {
+      square.innerHTML = "💥";
     }
   }
 }
