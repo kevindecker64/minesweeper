@@ -32,8 +32,8 @@ HTML, CSS, JavaScript
 
 ## Icebox Items
 
-1. Better styling
-2. Launch github-pages
+1. Win/Loss popup message
+2. Better styling
 3. Customizable:
     1. Bomb count
     2. Board size 
