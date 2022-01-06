@@ -26,7 +26,7 @@ HTML, CSS, JavaScript
 
 ## Play Here
 
-(coming soon)
+[Click Here to Play Now](https://kevindecker64.github.io/minesweeper/)
 
 ---
 
